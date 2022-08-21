@@ -1,0 +1,59 @@
+type Response_3 = 
+ variant {
+   err: Error;
+   ok: bool;
+ };
+type Response_2 = 
+ variant {
+   err: Error;
+   ok: vec Card;
+ };
+type Response_1 = 
+ variant {
+   err: Error;
+   ok: vec Player;
+ };
+type Response = 
+ variant {
+   err: Error;
+   ok: text;
+ };
+type Player = 
+ record {
+   gameProgresses: vec GameProgress;
+   isPlaying: bool;
+   userid: principal;
+ };
+type GameProgress = 
+ record {
+   chosenSequence: vec record {
+                         Card;
+                         Card;
+                       };
+   matchedPair: int;
+   score: int;
+   startTime: int;
+ };
+type Error = 
+ variant {
+   AlreadyExisting;
+   NotAuthorized;
+   NotFound;
+ };
+type Card = record {data: text;};
+service : {
+  checkCardPair: (record {
+                    Card;
+                    Card;
+                  }, int) -> (Response);
+  createCard: (Card) -> (Response);
+  deleteCard: (Card) -> (Response);
+  duplicateCards: () -> (Response_2);
+  isValidGameProgress: (vec record {
+                              Card;
+                              Card;
+                            }) -> (Response_3) query;
+  listCards: () -> (Response_2) query;
+  listPlayers: () -> (Response_1) query;
+  updateCard: (Card) -> (Response);
+}

@@ -1,0 +1,15 @@
+Yêu cầu:
+- chuyển logic kiểm tra về smartcontract bằng motoko
+    + data sẽ có 6 card riêng lẻ -> duplicate mỗi card thêm 1 card (DONE)
+    + client chọn 2 card ->gửi request về motoko và kiểm tra so sánh 2 card đó và lưu vào state (DONE)
+    + Cứ chọn 2 card thì tính là 1 lượt (DONE)
+    + Thời gian thì sẽ từ client gửi về (DONE)
+    => Diem = luot + thoi gian choi
+
+
+Thêm 1 bài là kiểm tra lại lượt chơi khi hoàn thành (DONE)
+    input: 1 array gồm các card client chọn theo thứ tự đc gửi từ CLIENT
+    output: 
+    - So sánh vởi mảng đã lưu ở motoko
+        + Giống =>true
+        + Khác => false (hack)
